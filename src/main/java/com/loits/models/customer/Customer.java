@@ -15,17 +15,17 @@ public class Customer extends Auditable<String> {
     private Long customerIdPk;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="entry_id_fk", referencedColumnName = "entry_id_pk",nullable = false)
+    @JoinColumn(name = "entry_id_fk", referencedColumnName = "entry_id_pk", nullable = false)
     private MasterEntry entryIdFk;
 
     @Column(name = "title", nullable = false)
     private String title;
 
     @Column(name = "full_name", nullable = false)
-    private Integer fullName;
+    private String fullName;
 
-    @Column(name = "prefered_name", nullable = false)
-    private String preferedName;
+    @Column(name = "preferred_name", nullable = false)
+    private String preferredName;
 
     @Column(name = "dob", nullable = false)
     private Date dob;
@@ -64,7 +64,7 @@ public class Customer extends Auditable<String> {
     private String mobileConnection;
 
     @Column(name = "residence_phone")
-    private int residencePhone;
+    private Integer residencePhone;
 
     @Column(name = "province", nullable = false)
     private String province;
@@ -73,18 +73,29 @@ public class Customer extends Auditable<String> {
     private String noOfDependent;
 
     @Column(name = "home_ownership", nullable = false)
-    private String homeOwnership ;
+    private String homeOwnership;
 
     @Column(name = "vehicle_owned", nullable = false)
-    private String vehicleOwned ;
+    private String vehicleOwned;
 
     @Column(name = "highest_education", nullable = false)
-    private String highestEducation ;
+    private String highestEducation;
 
 
     @Column(name = "status", nullable = false)
     private String status;
 
+    @Column(name = "version", nullable = false)
+    @Version
+    private Long version;
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
 
     public String getStatus() {
         return status;
@@ -118,20 +129,24 @@ public class Customer extends Auditable<String> {
         this.title = title;
     }
 
-    public Integer getFullName() {
+    public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(Integer fullName) {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    public String getPreferedName() {
-        return preferedName;
+    public void setResidencePhone(Integer residencePhone) {
+        this.residencePhone = residencePhone;
     }
 
-    public void setPreferedName(String preferedName) {
-        this.preferedName = preferedName;
+    public String getPreferredName() {
+        return preferredName;
+    }
+
+    public void setPreferredName(String preferredName) {
+        this.preferredName = preferredName;
     }
 
     public Date getDob() {
@@ -230,12 +245,8 @@ public class Customer extends Auditable<String> {
         this.mobileConnection = mobileConnection;
     }
 
-    public int getResidencePhone() {
+    public Integer getResidencePhone() {
         return residencePhone;
-    }
-
-    public void setResidencePhone(int residencePhone) {
-        this.residencePhone = residencePhone;
     }
 
     public String getProvince() {
